@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <title>Mef City Dashboard</title>
+    <link rel="stylesheet" href="/assets/dashboard.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <a id="homeNavBtn" class="brand-home-btn" href="/dashboard" aria-label="Ana sayfaya git">
+          <div class="brand-logo-wrap">
+            <img
+              class="brand-logo"
+              src="/images/logo/mefcitylogo.jpg"
+              alt="Mef City Logo"
+              onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/images/logo/MEF%20CITY%20LOGO%205-01.jpg';}else{this.style.display='none';}"
+            />
+          </div>
+        </a>
+      </div>
+
+      <nav class="menu">
+        <div class="menu-group">
+          <a class="menu-item with-icon active" href="/dashboard" data-view="dashboard"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M3 10.5L12 3l9 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.25 9.75V21h13.5V9.75" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.75 21v-6h4.5v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Ana Sayfa</span></a>
+          <a class="menu-item with-icon" href="/projects" data-view="projects"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Projeler</span></a>
+          <a class="menu-item with-icon" href="/units" data-view="units"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M4 10.5L12 4l8 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v10h12V10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 20v-4h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span><span>Konutlar</span></a>
+          <a class="menu-item with-icon" href="/customers" data-view="customers"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 19c0-3.2 3.1-5.2 7-5.2s7 2 7 5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Müşteriler</span></a>
+          <a class="menu-item with-icon" href="/reports" data-view="reports"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 20v-7M12 20V6M17 20v-10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Raporlar</span></a>
+          <a class="menu-item with-icon" href="/calculations" data-view="calculations"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><rect x="5" y="3.5" width="14" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h8M8.5 12.2h0M12 12.2h0M15.5 12.2h0M8.5 15.8h0M12 15.8h0M15.5 15.8h0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Hesaplama</span></a>
+        </div>
+
+        <div class="menu-group menu-group-divider">
+          <a class="menu-item with-icon" href="/mef-assist" data-view="mef-assist"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 13.5h7M8.8 10h6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Mef Assist</span></a>
+          <a class="menu-item with-icon" href="/mef-prive" data-view="mef-prive"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M12 4l6 2.5V11c0 4.2-2.6 7.2-6 9-3.4-1.8-6-4.8-6-9V6.5L12 4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 12.3l1.7 1.7 3.4-3.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Mef Prive</span></a>
+        </div>
+
+        <div class="menu-group menu-group-bottom">
+          <a class="menu-item with-icon menu-item-support" href="/support" data-view="support"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.6-1.8 2.1-2.4 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></span><span>Destek</span></a>
+          <a class="menu-item with-icon" href="/users" data-view="users"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16.5" cy="10.2" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 19c0-2.7 2.2-4.4 4.9-4.4s4.9 1.7 4.9 4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M13.8 18.7c.3-1.8 1.8-3.1 3.8-3.1 1.1 0 2.1.4 2.9 1.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Kullanıcılar</span></a>
+          <a class="menu-item with-icon" href="/settings" data-view="settings"><span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="7" r="1.7" fill="#fff" stroke="currentColor" stroke-width="1.8"/><circle cx="15" cy="12" r="1.7" fill="#fff" stroke="currentColor" stroke-width="1.8"/><circle cx="11" cy="17" r="1.7" fill="#fff" stroke="currentColor" stroke-width="1.8"/></svg></span><span>Ayarlar</span></a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 id="viewTitle">Ana Sayfa</h1>
+          <p id="viewSubtitle">Müşteri, proje ve satış durumunu canlı olarak izleyin.</p>
+        </div>
+        <div class="btns">
+          <button id="mobileMenuToggleBtn" type="button" class="ghost-btn mobile-menu-toggle-btn" aria-label="Menüyü aç" aria-expanded="false" title="Menü"><span class="mobile-menu-toggle-icon" aria-hidden="true">☰</span><span class="mobile-menu-toggle-label">MENÜ</span></button>
+          <button id="themeToggleBtn" type="button" class="ghost-btn theme-toggle-btn" aria-label="Temayı değiştir" title="Temayı değiştir">🌞</button>
+          <div id="profileHeaderBox" class="profile-header-box">
+            <img id="profileHeaderPhoto" class="profile-header-photo" alt="Profil Foto" />
+            <span id="profileHeaderName" class="profile-header-name">-</span>
+          </div>
+          <button id="logoutBtn" type="button">Çıkış Yap</button>
+        </div>
+      </div>
+
+      <div id="appAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+      <div id="toastStack" class="toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+      <section id="view-dashboard" class="view active">
+        <section class="cards">
+          <div id="projectStatusCards" class="cards-contents"></div>
+        </section>
+
+        <section class="card panel">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <strong id="goToSupportViewBtn" class="clickable-title">Destek Ticketları</strong>
+            <div id="openTicketsSummary" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+          </div>
+          <div id="openTicketsStatus" class="status"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Ad Soyad</th>
+                <th>Etiket</th>
+                <th>Durum</th>
+                <th>İletişim</th>
+                <th>Oluşturulma</th>
+              </tr>
+            </thead>
+            <tbody id="openTicketsBody">
+              <tr><td colspan="5">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <section id="view-customers" class="view">
+        <!-- İlk açılış: Müşteri seçim kutuları -->
+        <section id="customersInitialView" class="card panel">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div>
+              <strong>Müşteri Yönetimi</strong>
+              <p class="muted-note">Müşteri ekleyin, düzenleyin, silin ve proje-daire eşleştirmelerini yönetin.</p>
+            </div>
+            <button id="openCreateCustomerBtn" type="button">Müşteri Ekle</button>
+          </div>
+
+          <div class="customers-selection-grid">
+            <button id="selectOwnersBtn" class="customer-selection-card" type="button">
+              <div class="selection-icon">🏠</div>
+              <div class="selection-text">
+                <strong>Konut Sahipleri</strong>
+                <small id="ownerCountInitial" class="muted-note">0 müşteri</small>
+              </div>
+            </button>
+
+            <button id="selectPlainBtn" class="customer-selection-card" type="button">
+              <div class="selection-icon">👤</div>
+              <div class="selection-text">
+                <strong>Müşteriler</strong>
+                <small id="customerCountInitial" class="muted-note">0 müşteri</small>
+              </div>
+            </button>
+          </div>
+        </section>
+
+        <!-- Konut Sahipleri tablo view -->
+        <section id="customersTableViewOwners" class="card panel" style="display:none">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <button id="backFromOwnersBtn" class="ghost-btn" type="button" style="flex-shrink:0">← Geri</button>
+            <div style="flex:1">
+              <strong>🏠 Konut Sahipleri</strong>
+              <p class="muted-note" style="margin:2px 0 0">Proje ve daire bağlı müşteriler</p>
+            </div>
+            <button id="openCreateCustomerBtn2" type="button">Müşteri Ekle</button>
+          </div>
+
+          <div class="toolbar" style="grid-template-columns:1fr auto">
+            <input id="customerSearchOwners" type="text" placeholder="İsim, soyisim, TC veya telefon ara" />
+            <span id="ownerCountBadge" class="tag" style="background:var(--chip);">0 kişi</span>
+          </div>
+
+          <div id="customersStatusOwners" class="status"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Müşteri</th>
+                <th>TC Kimlik No</th>
+                <th>Meslek</th>
+                <th>İletişim</th>
+                <th>Proje / Daire</th>
+                <th>Durum</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="ownersBody">
+              <tr><td colspan="7">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Müşteriler (düz) tablo view -->
+        <section id="customersTableViewPlain" class="card panel" style="display:none">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <button id="backFromPlainBtn" class="ghost-btn" type="button" style="flex-shrink:0">← Geri</button>
+            <div style="flex:1">
+              <strong>👤 Müşteriler</strong>
+              <p class="muted-note" style="margin:2px 0 0">Bağımsız müşteri kayıtları</p>
+            </div>
+            <button id="openCreateCustomerBtn3" type="button">Müşteri Ekle</button>
+          </div>
+
+          <div class="toolbar" style="grid-template-columns:1fr auto">
+            <input id="customerSearchPlain" type="text" placeholder="İsim, soyisim, TC veya telefon ara" />
+            <span id="customerCountBadge" class="tag" style="background:var(--chip);">0 kişi</span>
+          </div>
+
+          <div id="customersStatusPlain" class="status"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Müşteri</th>
+                <th>Meslek</th>
+                <th>İletişim</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="customersBody">
+              <tr><td colspan="4">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <section id="view-projects" class="view">
+        <section class="card panel">
+          <strong>Proje Yönetimi</strong>
+          <p class="muted-note">Projeleri ekleyin, düzenleyin ve silin.</p>
+
+          <div class="toolbar">
+            <input id="projectSearch" type="text" placeholder="Proje adı ara" />
+            <div></div>
+            <div class="toolbar-actions">
+              <button id="openCreateProjectBtn" type="button">Proje Ekle</button>
+            </div>
+          </div>
+
+          <div id="projectsStatus" class="status"></div>
+
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>Proje Adı</th>
+                <th>Toplam Daire</th>
+                <th>Boş</th>
+                <th>Satıldı</th>
+                <th>Müşteri</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="projectsBody">
+              <tr><td colspan="6">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+
+          <div class="section-ribbon">Proje stoğu özeti</div>
+          <div id="projectInventory" class="project-grid"></div>
+
+        </section>
+      </section>
+
+      <section id="view-units" class="view">
+        <section class="card panel">
+          <strong>Konut / Daire Yönetimi</strong>
+          <p class="muted-note">Daireleri projelere ekleyin, düzenleyin ve silin.</p>
+
+          <div class="toolbar" style="grid-template-columns:1.2fr 180px 180px auto">
+            <input id="unitSearch" type="text" placeholder="Daire etiketi ara" />
+            <select id="unitProjectFilter">
+              <option value="all">Tüm Projeler</option>
+            </select>
+            <select id="unitStatusFilter">
+              <option value="all">Tüm Durumlar</option>
+              <option value="available">Boş</option>
+              <option value="optioned">Opsiyonlandı</option>
+              <option value="sold">Satıldı</option>
+            </select>
+            <div class="toolbar-actions">
+              <button id="openCreateUnitBtn" type="button">Daire Ekle</button>
+            </div>
+          </div>
+
+          <div id="unitsStatus" class="status"></div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Proje</th>
+                <th>Daire / Konut</th>
+                <th>Durum</th>
+                <th>Bağlı Müşteri</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="unitsBody">
+              <tr><td colspan="5">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+
+        </section>
+      </section>
+
+      <section id="view-reports" class="view">
+        <section class="card panel">
+          <strong>Raporlar</strong>
+          <p class="muted-note">Bu alan daha sonra doldurulacak.</p>
+        </section>
+      </section>
+
+      <section id="view-calculations" class="view">
+        <section class="card panel">
+          <strong>Hesaplama</strong>
+          <p class="muted-note">Bu alan daha sonra doldurulacak.</p>
+        </section>
+      </section>
+
+      <section id="view-mef-assist" class="view">
+        <section class="card panel">
+          <strong>Mef Assist</strong>
+          <p class="muted-note">Bu alan daha sonra doldurulacak.</p>
+        </section>
+      </section>
+
+      <section id="view-mef-prive" class="view">
+        <section class="card panel">
+          <strong>Mef Prive</strong>
+          <p class="muted-note">Bu alan daha sonra doldurulacak.</p>
+        </section>
+      </section>
+
+      <section id="view-users" class="view">
+        <section class="card panel">
+          <strong>Kullanıcılar</strong>
+          <p class="muted-note">Kullanıcı ekleme, düzenleme ve silme işlemlerini bu bölümde yöneteceksiniz.</p>
+
+          <div class="toolbar" style="grid-template-columns:1fr 160px auto; margin-top:12px">
+            <input id="userSearch" type="text" placeholder="Ad, email veya telefon ara" />
+            <select id="userRoleFilter">
+              <option value="all">Tüm Roller</option>
+              <option value="admin">Admin</option>
+              <option value="manager">Yönetici</option>
+              <option value="user">Kullanıcı</option>
+            </select>
+            <div class="toolbar-actions">
+              <button id="openRoleManagerBtn" class="ghost-btn" type="button">Rol Ekle</button>
+              <button id="openCreateUserBtn" type="button">Kullanıcı Ekle</button>
+            </div>
+          </div>
+
+          <div id="usersStatus" class="status"></div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Ad</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Rol</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="usersBody">
+              <tr><td colspan="5">Yükleniyor...</td></tr>
+            </tbody>
+          </table>
+
+        </section>
+      </section>
+
+      <section id="view-profile" class="view">
+        <section class="card panel">
+          <strong>Profilim</strong>
+          <p class="muted-note">Aktif kullanıcı bilgileri burada gösterilir.</p>
+          <div id="profileResult" class="profile-box">Yükleniyor...</div>
+
+          <form id="profileUpdateForm" class="form-section" style="margin-top:12px">
+            <h3>Profili Güncelle</h3>
+            <div class="profile-update-grid" style="margin-top:12px;">
+              <div class="profile-photo-section">
+                <img id="profileUpdatePhoto" class="profile-update-photo" alt="Profil Foto" />
+                <div>
+                  <label for="profilePhotoInput">Profil Fotoğrafı</label>
+                  <input id="profilePhotoInput" type="file" accept="image/*" />
+                  <div class="muted-note" style="font-size:11px;margin-top:4px;">Maksimum 5MB, JPG/PNG/GIF/WebP</div>
+                </div>
+              </div>
+
+              <div class="profile-fields-stack">
+                <div class="field"><label for="profileNameInput">Ad Soyad</label><input id="profileNameInput" type="text" required /></div>
+                <div class="field"><label for="profileEmailInput">Email</label><input id="profileEmailInput" type="email" required /></div>
+                <div class="field"><label for="profilePhoneInput">Telefon</label><input id="profilePhoneInput" type="text" inputmode="numeric" placeholder="05XXXXXXXXX" required /></div>
+              </div>
+            </div>
+            <div id="profileUpdateStatus" class="status"></div>
+            <div class="confirm-actions" style="margin-top:12px">
+              <button id="saveProfileBtn" type="submit">Güncelle</button>
+            </div>
+          </form>
+
+          <form id="passwordForm" class="form-section" style="margin-top:12px">
+            <h3>Şifre Değiştir</h3>
+            <div class="form-grid form-grid-inline3 profile-password-grid">
+              <div class="field"><label for="currentPassword">Mevcut Şifre</label><input id="currentPassword" type="password" required /></div>
+              <div class="field"><label for="newPassword">Yeni Şifre</label><input id="newPassword" type="password" required /></div>
+              <div class="field"><label for="confirmPassword">Yeni Şifre Tekrar</label><input id="confirmPassword" type="password" required /></div>
+            </div>
+            <div id="passwordFormStatus" class="status"></div>
+            <div class="confirm-actions" style="margin-top:12px">
+              <button id="savePasswordBtn" type="submit">Şifreyi Güncelle</button>
+            </div>
+          </form>
+        </section>
+      </section>
+
+      <section id="view-support" class="view">
+        <section class="card panel">
+          <div class="toolbar" style="grid-template-columns: 1fr auto; align-items:center; margin-top: 0;">
+            <div>
+              <strong>Destek Ticket Sistemi</strong>
+              <p class="muted-note" style="margin:4px 0 0">Acil talepleri durum bazli yonetin, notlari sohbet akisiyla takip edin.</p>
+            </div>
+            <button id="openSupportCreateModalBtn" type="button">Yeni Ticket Ac</button>
+          </div>
+
+          <div class="toolbar" style="grid-template-columns: 1fr 220px; margin-top: 12px;">
+            <input id="supportSearch" type="text" placeholder="Ad, mail veya aciklama ara" />
+            <select id="supportStatusFilter">
+              <option value="all">Tum Ticketlar</option>
+              <option value="open">Acik</option>
+              <option value="in_progress">Islemde</option>
+              <option value="closed">Kapali</option>
+              <option value="deleted">Silinmis</option>
+            </select>
+          </div>
+
+          <div id="supportTicketsStatus" class="status"></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Kisi Bilgileri</th>
+                <th>Etiket</th>
+                <th>Durum</th>
+                <th>Islem</th>
+              </tr>
+            </thead>
+            <tbody id="supportTicketsBody">
+              <tr><td colspan="4">Yukleniyor...</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <section id="view-settings" class="view">
+        <section class="card panel">
+          <strong>Ayarlar Merkezi</strong>
+          <p class="muted-note">Dinamik ayarları kartlardan seçin; detaylar tıklayınca açılır.</p>
+
+          <div class="settings-feature-grid">
+            <button id="openSettingsTagsPanelBtn" class="settings-feature-card" data-feature="tags" type="button" aria-expanded="false" aria-controls="settingsPanelTags">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M5 8.5h14M5 15.5h14M9 4L7 20M17 4l-2 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Destek Etiketleri</strong>
+                <small>Ticket etiketlerini yönetin</small>
+              </span>
+            </button>
+
+            <button id="openSettingsReferencesPanelBtn" class="settings-feature-card" data-feature="references" type="button" aria-expanded="false" aria-controls="settingsPanelReferences">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M7 6h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10.5H15.5M8.5 13.5H13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Referanslar</strong>
+                <small>Bizi nereden duydunuz secenekleri</small>
+              </span>
+            </button>
+
+            <button id="openSettingsSmtpPanelBtn" class="settings-feature-card" data-feature="smtp" type="button" aria-expanded="false" aria-controls="settingsPanelSmtp">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 12v2.2c0 1-1.1 1.6-2 1a3.8 3.8 0 1 1 1.6-3.1V12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Mail Ayarları</strong>
+                <small>SMTP gönderim ayarları</small>
+              </span>
+            </button>
+
+            <button id="openSettingsUserSettingsPanelBtn" class="settings-feature-card" data-feature="user-settings" type="button" aria-expanded="false" aria-controls="settingsPanelUserSettings">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 19c0-3 2.9-4.8 6.5-4.8s6.5 1.8 6.5 4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Kullanıcı Ayarları</strong>
+                <small>Tema, sayfa ve tercihler</small>
+              </span>
+            </button>
+
+            <button id="openSettingsNotificationsPanelBtn" class="settings-feature-card" data-feature="notifications" type="button" aria-expanded="false" aria-controls="settingsPanelNotifications">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M12 5a4 4 0 0 1 4 4v2.8l1.5 2.7H6.5L8 11.8V9a4 4 0 0 1 4-4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 17.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Bildirim Ayarları</strong>
+                <small>Mail ve sistem bildirimleri</small>
+              </span>
+            </button>
+
+            <button id="openSettingsLogsPanelBtn" class="settings-feature-card" data-feature="logs" type="button" aria-expanded="false" aria-controls="settingsPanelLogs">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><rect x="6" y="4" width="12" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 9h6M9 13h6M9 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Log Ayarları</strong>
+                <small>Kayıt ve izleme yönetimi</small>
+              </span>
+            </button>
+
+            <button id="openSettingsSecurityPanelBtn" class="settings-feature-card" data-feature="security" type="button" aria-expanded="false" aria-controls="settingsPanelSecurity">
+              <span class="settings-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><rect x="6" y="11" width="12" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 11V8a3.5 3.5 0 1 1 7 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1" fill="currentColor"/></svg></span>
+              <span class="settings-feature-text">
+                <strong>Güvenlik Ayarları</strong>
+                <small>Politika ve erişim koruması</small>
+              </span>
+            </button>
+          </div>
+
+          <div id="settingsPanelTags" class="settings-feature-panel" data-feature-panel="tags">
+            <div class="toolbar" style="grid-template-columns:1fr auto; margin-top:12px">
+              <input id="tagNameInput" type="text" placeholder="Yeni etiket adı" />
+              <div class="toolbar-actions"><button id="createTagBtn" type="button">Etiket Ekle</button></div>
+            </div>
+            <div id="tagsStatus" class="status"></div>
+            <ul id="tagsList" class="activity-list"><li class="activity-item">Etiketler yükleniyor...</li></ul>
+          </div>
+
+          <div id="settingsPanelReferences" class="settings-feature-panel" data-feature-panel="references">
+            <div class="toolbar" style="grid-template-columns:1fr auto; margin-top:12px">
+              <input id="referenceSourceInput" type="text" placeholder="Yeni kaynak (Orn: Instagram, Fuar, Tavsiye)" />
+              <div class="toolbar-actions"><button id="createReferenceSourceBtn" type="button">Kaynak Ekle</button></div>
+            </div>
+            <div id="referencesStatus" class="status"></div>
+            <ul id="referencesList" class="activity-list"><li class="activity-item">Kaynaklar yukleniyor...</li></ul>
+          </div>
+
+          <div id="settingsPanelSmtp" class="settings-feature-panel" data-feature-panel="smtp">
+            <form id="smtpSettingsForm" class="form-section" style="margin-top:12px">
+              <div class="form-grid">
+                <div class="field"><label for="smtpHost">SMTP Host</label><input id="smtpHost" placeholder="smtp.example.com" required /></div>
+                <div class="field"><label for="smtpPort">SMTP Port</label><input id="smtpPort" type="number" min="1" placeholder="587" required /></div>
+                <div class="field"><label for="smtpUser">SMTP Kullanıcı</label><input id="smtpUser" type="text" placeholder="mailer@example.com" required /></div>
+                <div class="field"><label for="smtpFrom">Gönderen (From)</label><input id="smtpFrom" type="text" placeholder="MEF CITY <mailer@example.com>" required /></div>
+                <div class="field full"><label for="smtpPass">SMTP Şifre</label><input id="smtpPass" type="password" placeholder="Mevcut şifreyi korumak için boş bırakabilirsiniz" /></div>
+                <div class="field full" style="display:flex;align-items:center;gap:8px">
+                  <input id="smtpUseSecure" type="checkbox" style="width:auto" />
+                  <label for="smtpUseSecure" style="margin:0">SSL/TLS (Secure) kullan</label>
+                </div>
+              </div>
+              <div id="smtpSettingsStatus" class="status"></div>
+              <div class="confirm-actions" style="margin-top:12px">
+                <button id="saveSmtpSettingsBtn" type="submit">Mail Ayarlarını Kaydet</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="settingsPanelUserSettings" class="settings-feature-panel" data-feature-panel="user-settings">
+            <div class="form-section">
+              <h3>Görünüm Tercihleri</h3>
+              <div class="pref-row">
+                <div class="pref-row-info">
+                  <span class="pref-label">Koyu Tema</span>
+                  <span class="muted-note" style="margin-top:2px">Arayüzü koyu renklerle görüntüle</span>
+                </div>
+                <label class="pref-switch" for="prefDarkTheme">
+                  <input id="prefDarkTheme" type="checkbox" role="switch" aria-label="Koyu Tema" />
+                  <span class="pref-switch-track" aria-hidden="true"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-section" style="margin-top:10px">
+              <h3>Uygulama Tercihleri</h3>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="prefDefaultView">Varsayılan Sayfa</label>
+                  <select id="prefDefaultView">
+                    <option value="dashboard">Kontrol Paneli</option>
+                    <option value="customers">Müşteriler</option>
+                    <option value="support">Destek</option>
+                    <option value="profile">Profilim</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="prefPageSize">Sayfa Başına Kayıt</label>
+                  <select id="prefPageSize">
+                    <option value="10">10 kayıt</option>
+                    <option value="25">25 kayıt</option>
+                    <option value="50">50 kayıt</option>
+                    <option value="100">100 kayıt</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div id="userPrefsStatus" class="status"></div>
+            <div class="confirm-actions" style="margin-top:12px">
+              <button id="saveUserPrefsBtn" type="button">Tercihleri Kaydet</button>
+            </div>
+          </div>
+
+          <div id="settingsPanelNotifications" class="settings-feature-panel" data-feature-panel="notifications">
+            <form id="notificationsSettingsForm" class="form-section">
+              <h3>E-posta Bildirimleri</h3>
+              <div class="field" style="margin-top:12px">
+                <label for="notifRecipientEmail">Bildirim Alıcı Adresi</label>
+                <input id="notifRecipientEmail" type="email" placeholder="admin@example.com" />
+              </div>
+              <div class="pref-row">
+                <div class="pref-row-info">
+                  <span class="pref-label">Yeni Destek Ticketi</span>
+                  <span class="muted-note" style="margin-top:2px">Ticket oluşturulunca bildirim gönder</span>
+                </div>
+                <label class="pref-switch" for="notifOnNewTicket">
+                  <input id="notifOnNewTicket" type="checkbox" role="switch" />
+                  <span class="pref-switch-track" aria-hidden="true"></span>
+                </label>
+              </div>
+              <div class="pref-row">
+                <div class="pref-row-info">
+                  <span class="pref-label">Ticket Kapatilinca</span>
+                  <span class="muted-note" style="margin-top:2px">Ticket kapanınca bildirim gönder</span>
+                </div>
+                <label class="pref-switch" for="notifOnCloseTicket">
+                  <input id="notifOnCloseTicket" type="checkbox" role="switch" />
+                  <span class="pref-switch-track" aria-hidden="true"></span>
+                </label>
+              </div>
+              <div class="pref-row">
+                <div class="pref-row-info">
+                  <span class="pref-label">Yeni Müşteri</span>
+                  <span class="muted-note" style="margin-top:2px">Müşteri eklenincebildirim gönder</span>
+                </div>
+                <label class="pref-switch" for="notifOnNewCustomer">
+                  <input id="notifOnNewCustomer" type="checkbox" role="switch" />
+                  <span class="pref-switch-track" aria-hidden="true"></span>
+                </label>
+              </div>
+              <div id="notificationsSettingsStatus" class="status"></div>
+              <div class="confirm-actions" style="margin-top:12px">
+                <button id="saveNotificationsSettingsBtn" type="submit">Bildirim Ayarlarını Kaydet</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="settingsPanelLogs" class="settings-feature-panel" data-feature-panel="logs">
+            <form id="logsSettingsForm" class="form-section">
+              <h3>Log Yönetimi</h3>
+              <div class="form-grid" style="margin-top:12px">
+                <div class="field">
+                  <label for="logLevel">Log Seviyesi</label>
+                  <select id="logLevel">
+                    <option value="error">error — Sadece hatalar</option>
+                    <option value="warn">warn — Uyarılar + hatalar</option>
+                    <option value="info">info — Genel bilgi</option>
+                    <option value="debug">debug — Tüm detaylar</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="logRetentionDays">Saklama Süresi</label>
+                  <select id="logRetentionDays">
+                    <option value="7">7 gün</option>
+                    <option value="30">30 gün</option>
+                    <option value="90">90 gün</option>
+                    <option value="180">180 gün</option>
+                  </select>
+                </div>
+              </div>
+              <div id="logsSettingsStatus" class="status"></div>
+              <div class="confirm-actions" style="margin-top:12px">
+                <button id="saveLogsSettingsBtn" type="submit">Log Ayarlarını Kaydet</button>
+              </div>
+            </form>
+
+            <div class="form-section" style="margin-top:12px">
+              <h3>İşlem Kayıtları (Audit Log)</h3>
+              <div class="confirm-actions" style="margin-top:10px">
+                <button id="auditLogRefreshBtn" type="button" class="ghost-btn">Yenile</button>
+              </div>
+              <div id="auditLogStatus" class="status"></div>
+              <div style="overflow:auto">
+                <table id="auditLogTable">
+                  <thead>
+                    <tr>
+                      <th>Zaman</th>
+                      <th>Kullanıcı</th>
+                      <th>İşlem</th>
+                      <th>Modül</th>
+                      <th>Detay</th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditLogBody">
+                    <tr><td colspan="5">Kayıtlar yükleniyor...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pager-wrap">
+                <span id="auditLogMeta" class="pager-meta"></span>
+                <div class="pager-controls">
+                  <button id="auditLogPrevBtn" type="button" class="ghost-btn" disabled>&larr; Önceki</button>
+                  <div id="auditLogPageButtons"></div>
+                  <button id="auditLogNextBtn" type="button" class="ghost-btn" disabled>Sonraki &rarr;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="settingsPanelSecurity" class="settings-feature-panel" data-feature-panel="security">
+            <form id="securitySettingsForm" class="form-section">
+              <h3>Oturum ve Erişim</h3>
+              <div class="form-grid" style="margin-top:12px">
+                <div class="field">
+                  <label for="secSessionTimeout">Oturum Süresi</label>
+                  <select id="secSessionTimeout">
+                    <option value="15">15 dakika</option>
+                    <option value="30">30 dakika</option>
+                    <option value="60">1 saat</option>
+                    <option value="240">4 saat</option>
+                    <option value="480">8 saat</option>
+                    <option value="0">Sınırsız</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="secMaxLoginAttempts">Maks. Giriş Denemesi</label>
+                  <input id="secMaxLoginAttempts" type="number" min="1" max="20" placeholder="5" />
+                </div>
+                <div class="field">
+                  <label for="secMinPasswordLength">Min. Şifre Uzunluğu</label>
+                  <input id="secMinPasswordLength" type="number" min="6" max="32" placeholder="8" />
+                </div>
+              </div>
+              <div id="securitySettingsStatus" class="status"></div>
+              <div class="confirm-actions" style="margin-top:12px">
+                <button id="saveSecuritySettingsBtn" type="submit">Güvenlik Ayarlarını Kaydet</button>
+              </div>
+            </form>
+          </div>
+
+          <div id="settingsPanelPlaceholder" class="settings-feature-panel" data-feature-panel="placeholder">
+            <div class="settings-placeholder-card">
+              <div class="settings-placeholder-badge">Yakında</div>
+              <h3 id="settingsPlaceholderTitle">Modül Hazırlanıyor</h3>
+              <p id="settingsPlaceholderText" class="muted-note">Bu ayar modülü için altyapı hazırlanıyor. İçeriği birlikte adım adım doldurabiliriz.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="supportTicketModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="supportTicketModalTitle">
+    <div class="modal-card" style="max-width:760px">
+      <div class="modal-header">
+        <div>
+          <h2 id="supportTicketModalTitle">Yeni Ticket Ac</h2>
+          <p id="supportTicketModalSubtitle">Musteri bilgilerini doldurun, durumu secin ve dosya ekleyin.</p>
+        </div>
+        <button id="closeSupportTicketModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+
+      <form id="supportTicketForm">
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="field"><label for="supportFullName">Adi Soyadi</label><input id="supportFullName" required /></div>
+            <div class="field"><label for="supportPhone">Telefon Numarasi</label><input id="supportPhone" required /></div>
+            <div class="field"><label for="supportTag">Etiket</label><select id="supportTag"><option value="">Etiket secin</option></select></div>
+            <div class="field"><label for="supportTicketStatus">Durum</label><select id="supportTicketStatus"><option value="open">Acik</option><option value="in_progress">Islemde</option><option value="closed">Kapali</option></select></div>
+            <div class="field full"><label for="supportEmail">Mail Adresi</label><input id="supportEmail" type="email" required /></div>
+            <div class="field full"><label for="supportDescription">Kisa Aciklama</label><textarea id="supportDescription" required></textarea></div>
+            <div class="field full"><label for="supportAttachments">Ek Dosyalar (opsiyonel)</label><input id="supportAttachments" type="file" multiple /></div>
+          </div>
+        </div>
+
+        <div id="supportFormStatus" class="status"></div>
+
+        <div class="confirm-actions">
+          <button id="cancelSupportTicketBtn" class="ghost-btn" type="button">Vazgec</button>
+          <button id="saveSupportTicketBtn" type="submit">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="supportNotesModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="supportNotesModalTitle">
+    <div class="modal-card" style="max-width:860px">
+      <div class="modal-header">
+        <div>
+          <h2 id="supportNotesModalTitle">Ticket Notlari</h2>
+          <p id="supportNotesModalSubtitle">Sohbet akisinda tum notlar ve ek dosyalar.</p>
+        </div>
+        <button id="closeSupportNotesModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+
+      <div id="supportNotesTicketMeta" class="muted-note" style="margin-bottom:8px"></div>
+      <div id="supportTicketAttachmentsBox" class="activity-list" style="margin-bottom:10px"></div>
+      <div id="supportNotesList" class="activity-list" style="max-height:280px; overflow:auto"></div>
+
+      <form id="supportNoteForm" class="form-section" style="margin-top:10px">
+        <div class="form-grid">
+          <div class="field full"><label for="supportNoteText">Yeni Not</label><textarea id="supportNoteText" placeholder="Notunu yaz..."></textarea></div>
+          <div class="field full"><label for="supportNoteAttachments">Ek Dosya (opsiyonel)</label><input id="supportNoteAttachments" type="file" multiple /></div>
+        </div>
+        <div id="supportNotesStatus" class="status"></div>
+        <div class="confirm-actions" style="margin-top:8px">
+          <button id="saveSupportNoteBtn" type="submit">Not Gonder</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="customerModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="customerModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2 id="customerModalTitle">Müşteri Ekle</h2>
+          <p id="customerModalSubtitle">Müşteri profilini ve proje bağlantısını doldurun.</p>
+        </div>
+        <button id="closeCustomerModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+
+      <form id="customerForm">
+        <div class="form-section">
+          <h3>Profil Bilgileri</h3>
+          <div class="form-grid">
+            <div class="field"><label for="firstName">İsim</label><input id="firstName" name="firstName" required /></div>
+            <div class="field"><label for="lastName">Soyisim</label><input id="lastName" name="lastName" required /></div>
+            <div class="field"><label for="identityNumber">TC Kimlik No</label><input id="identityNumber" name="identityNumber" inputmode="numeric" maxlength="11" required /></div>
+            <div class="field"><label for="birthDate">Doğum Tarihi</label><input id="birthDate" name="birthDate" type="date" required /></div>
+            <div class="field full"><label for="occupation">Meslek</label><input id="occupation" name="occupation" required /></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>İletişim Bilgileri</h3>
+          <div class="form-grid">
+            <div class="field"><label for="phonePrimary">Telefon 1</label><input id="phonePrimary" name="phonePrimary" inputmode="numeric" maxlength="11" required /></div>
+            <div class="field"><label for="phoneSecondary">Telefon 2</label><input id="phoneSecondary" name="phoneSecondary" inputmode="numeric" maxlength="11" /></div>
+            <div class="field full"><label for="email">Mail Adresi</label><input id="email" name="email" type="email" required /></div>
+            <div class="field full"><label for="address">Adres</label><textarea id="address" name="address" required></textarea></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Detay Açıklama</h3>
+          <div class="form-grid">
+            <div class="field full"><textarea id="detailDescription" name="detailDescription" aria-label="Detay açıklama" placeholder="Müşteri kaydıyla ilgili notlar"></textarea></div>
+            <div class="field"><label for="referenceName">Referans</label><input id="referenceName" name="referenceName" placeholder="Musteriyi yonlendiren kisi" /></div>
+            <div class="field"><label for="referralSource">Bizi nereden duydunuz</label><select id="referralSource" name="referralSource"><option value="">Kaynak secin</option></select></div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Proje ve Konut Eşleştirme</h3>
+          <div class="form-grid form-grid-inline3">
+            <div class="field"><label for="projectId">Bağlı Proje</label><select id="projectId" name="projectId"><option value="">Proje seçin</option></select></div>
+            <div class="field"><label for="unitId">Bağlı Konut</label><select id="unitId" name="unitId"><option value="">Önce proje seçin</option></select><div id="unitInventoryNote" class="inventory-note">Müşteri bir konuta bağlandığında ilgili stok satıldı olarak işaretlenir.</div></div>
+            <div class="field"><label for="assignmentStatus">Satış Durumu</label><select id="assignmentStatus" name="assignmentStatus" disabled><option value="">Önce konut seçin</option><option value="optioned">Opsiyonlandı</option><option value="sold">Satıldı</option></select></div>
+          </div>
+        </div>
+
+        <div id="customerFormStatus" class="status"></div>
+
+        <div class="confirm-actions">
+          <button id="cancelCustomerBtn" class="ghost-btn" type="button">Vazgeç</button>
+          <button id="saveCustomerBtn" type="submit">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="projectModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+    <div class="modal-card confirm-card" style="max-width:480px">
+      <div class="modal-header">
+        <div>
+          <h2 id="projectModalTitle">Proje Ekle</h2>
+          <p id="projectModalSubtitle">Projeye bir isim verin.</p>
+        </div>
+        <button id="closeProjectModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+      <form id="projectForm">
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="field full"><label for="projectNameInput">Proje Adı</label><input id="projectNameInput" name="projectName" required /></div>
+          </div>
+        </div>
+        <div id="projectFormStatus" class="status"></div>
+        <div class="confirm-actions" style="margin-top:12px">
+          <button id="cancelProjectBtn" class="ghost-btn" type="button">Vazgeç</button>
+          <button id="saveProjectBtn" type="submit">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="unitModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="unitModalTitle">
+    <div class="modal-card confirm-card" style="max-width:520px">
+      <div class="modal-header">
+        <div>
+          <h2 id="unitModalTitle">Daire Ekle</h2>
+          <p id="unitModalSubtitle">Daireyi bir projeye bağlayın ve etiket belirleyin.</p>
+        </div>
+        <button id="closeUnitModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+      <form id="unitForm">
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="field full"><label for="unitProjectSelect">Proje</label><select id="unitProjectSelect" name="unitProjectId" required><option value="">Proje seçin</option></select></div>
+            <div class="field full"><label for="unitLabelInput">Daire / Konut Etiketi</label><input id="unitLabelInput" name="unitLabel" placeholder="Örn: A-101, 3B, Konut-15" required /></div>
+          </div>
+        </div>
+        <div id="unitFormStatus" class="status"></div>
+        <div class="confirm-actions" style="margin-top:12px">
+          <button id="cancelUnitBtn" class="ghost-btn" type="button">Vazgeç</button>
+          <button id="saveUnitBtn" type="submit">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="userModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="userModalTitle">
+    <div class="modal-card confirm-card" style="max-width:540px">
+      <div class="modal-header">
+        <div>
+          <h2 id="userModalTitle">Kullanıcı Ekle</h2>
+          <p id="userModalSubtitle">Yeni kullanıcı oluşturun.</p>
+        </div>
+        <button id="closeUserModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+      <form id="userForm">
+        <div class="form-section">
+          <div class="form-grid">
+            <div class="field full"><label for="userNameInput">Ad Soyad</label><input id="userNameInput" required /></div>
+            <div class="field full"><label for="userEmailInput">Email</label><input id="userEmailInput" type="email" placeholder="ornek@firma.com" required /></div>
+            <div class="field full"><label for="userPhoneInput">Telefon</label><input id="userPhoneInput" inputmode="numeric" maxlength="11" pattern="\d{11}" placeholder="05XXXXXXXXX" required /></div>
+            <div class="field"><label for="userRoleInput">Rol</label><select id="userRoleInput"><option value="user">Kullanıcı</option><option value="manager">Yönetici</option><option value="admin">Admin</option></select></div>
+            <div class="field"><label for="userPasswordInput">Şifre</label><input id="userPasswordInput" type="password" placeholder="En az 6 karakter" /></div>
+          </div>
+        </div>
+        <div id="userFormStatus" class="status"></div>
+        <div class="confirm-actions" style="margin-top:12px">
+          <button id="cancelUserBtn" class="ghost-btn" type="button">Vazgeç</button>
+          <button id="saveUserBtn" type="submit">Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="roleModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="roleModalTitle">
+    <div class="modal-card confirm-card" style="max-width:860px">
+      <div class="modal-header">
+        <div>
+          <h2 id="roleModalTitle">Rol Yönetimi</h2>
+          <p id="roleModalSubtitle">Mevcut rolleri düzenleyin/silin veya yeni rol oluşturun.</p>
+        </div>
+        <button id="closeRoleModalBtn" class="ghost-btn" type="button">Kapat</button>
+      </div>
+
+      <div class="form-section">
+        <div class="toolbar" style="grid-template-columns:1fr auto; margin-top:0">
+          <div class="muted-note">Mevcut Roller</div>
+          <div class="toolbar-actions"><button id="openRoleCreateBtn" class="ghost-btn" type="button">Rol Ekle</button></div>
+        </div>
+
+        <div id="roleListStatus" class="status"></div>
+
+        <div class="table-wrap" style="margin-top:12px">
+          <table>
+            <thead>
+              <tr>
+                <th>Rol</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="roleListBody">
+              <tr><td colspan="2">Roller yükleniyor...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <form id="roleForm">
+        <div class="form-section role-editor-section">
+          <button id="roleEditorToggleBtn" class="role-editor-toggle" type="button" aria-expanded="false" aria-controls="roleEditorBody">
+            <span id="roleEditorTitle">Yeni Rol Ekle</span>
+            <span class="role-editor-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" focusable="false" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </button>
+
+          <div id="roleEditorBody" class="role-editor-body collapsed">
+            <div class="form-grid" style="grid-template-columns:1fr">
+              <div class="field"><label for="roleNameInput">Rol Adı</label><input id="roleNameInput" placeholder="ör: finans, çağrı merkezi" required /></div>
+            </div>
+
+            <div class="table-wrap" style="margin-top:12px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Modül</th>
+                    <th>Görüntüle</th>
+                    <th>Ekle</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                  </tr>
+                </thead>
+                <tbody id="rolePermissionsBody"></tbody>
+              </table>
+            </div>
+
+            <div id="roleFormStatus" class="status"></div>
+            <div class="confirm-actions" style="margin-top:12px">
+              <button id="deleteRoleBtn" class="danger-btn" type="button">Rol Sil</button>
+              <button id="cancelRoleBtn" class="ghost-btn" type="button">Vazgeç</button>
+              <button id="saveRoleBtn" type="submit">Rolü Kaydet</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="mobileSidebarBackdrop" class="mobile-sidebar-backdrop" aria-hidden="true"></div>
+
+  <div id="confirmOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-card confirm-card">
+      <div class="modal-header">
+        <div>
+          <h3 id="confirmTitle">İşlem Onayı</h3>
+          <p id="confirmText">Devam etmek istiyor musunuz?</p>
+        </div>
+      </div>
+      <div class="confirm-actions">
+        <button id="confirmCancel" class="ghost-btn" type="button">Vazgeç</button>
+        <button id="confirmAccept" type="button">Onayla</button>
+      </div>
+    </div>
+  </div>
+
+    <script src="/assets/dashboard.js"></script>
+</body>
+</html>
