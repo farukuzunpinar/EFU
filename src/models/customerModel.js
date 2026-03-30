@@ -1,6 +1,47 @@
 const pool = require('../config/db');
 
-function buildCustomerSelect() {
+let customerReferralColumnsPromise = null;
+
+async function detectCustomerReferralColumns(executor) {
+  try {
+    const [rows] = await executor.execute(
+      `SELECT COLUMN_NAME
+       FROM information_schema.COLUMNS
+       WHERE TABLE_SCHEMA = DATABASE()
+         AND TABLE_NAME = 'customers'
+         AND COLUMN_NAME IN ('reference_name', 'referral_source')`
+    );
+
+    const names = new Set(rows.map((row) => String(row.COLUMN_NAME || '').toLowerCase()));
+    return {
+      hasReferenceName: names.has('reference_name'),
+      hasReferralSource: names.has('referral_source')
+    };
+  } catch (_) {
+    return {
+      hasReferenceName: false,
+      hasReferralSource: false
+    };
+  }
+}
+
+async function getCustomerReferralColumns(executor = pool) {
+  if (executor === pool) {
+    if (!customerReferralColumnsPromise) {
+      customerReferralColumnsPromise = detectCustomerReferralColumns(pool);
+    }
+    return customerReferralColumnsPromise;
+  }
+
+  return detectCustomerReferralColumns(executor);
+}
+
+function buildCustomerSelect(columns) {
+  const referralColumns = [
+    columns.hasReferenceName ? 'c.reference_name AS referenceName' : 'NULL AS referenceName',
+    columns.hasReferralSource ? 'c.referral_source AS referralSource' : 'NULL AS referralSource'
+  ];
+
   return `SELECT
     c.id,
     c.first_name AS firstName,
@@ -13,8 +54,8 @@ function buildCustomerSelect() {
     c.email,
     c.address,
     c.detail_description AS detailDescription,
-    c.reference_name AS referenceName,
-    c.referral_source AS referralSource,
+    ${referralColumns[0]},
+    ${referralColumns[1]},
     c.customer_type AS customerType,
     c.project_id AS projectId,
     p.name AS projectName,
@@ -29,8 +70,9 @@ function buildCustomerSelect() {
 }
 
 async function listCustomers() {
+  const columns = await getCustomerReferralColumns();
   const [rows] = await pool.execute(
-    `${buildCustomerSelect()}
+    `${buildCustomerSelect(columns)}
      ORDER BY c.id DESC`
   );
 
@@ -54,8 +96,9 @@ async function getCustomerSummary() {
     `
   );
 
+  const columns = await getCustomerReferralColumns();
   const [latestRows] = await pool.execute(
-    `${buildCustomerSelect()}
+    `${buildCustomerSelect(columns)}
      ORDER BY c.id DESC
      LIMIT 1`
   );
@@ -113,8 +156,9 @@ async function listInventory() {
 
 async function getCustomerById(connection, customerId) {
   const executor = connection || pool;
+  const columns = await getCustomerReferralColumns(executor);
   const [rows] = await executor.execute(
-    `${buildCustomerSelect()}
+    `${buildCustomerSelect(columns)}
      WHERE c.id = ?
      LIMIT 1`,
     [customerId]
@@ -247,8 +291,8 @@ async function validateAssignment(connection, payload, currentCustomerId) {
   }
 }
 
-function toInsertValues(payload) {
-  return [
+function toInsertValues(payload, columns) {
+  const values = [
     payload.firstName,
     payload.lastName,
     payload.identityNumber,
@@ -258,13 +302,24 @@ function toInsertValues(payload) {
     payload.phoneSecondary || null,
     payload.email,
     payload.address,
-    payload.detailDescription || null,
-    payload.referenceName || null,
-    payload.referralSource || null,
+    payload.detailDescription || null
+  ];
+
+  if (columns.hasReferenceName) {
+    values.push(payload.referenceName || null);
+  }
+
+  if (columns.hasReferralSource) {
+    values.push(payload.referralSource || null);
+  }
+
+  values.push(
     payload.customerType,
     payload.projectId || null,
     payload.unitId || null
-  ];
+  );
+
+  return values;
 }
 
 async function createCustomer(payload) {
@@ -272,28 +327,39 @@ async function createCustomer(payload) {
 
   try {
     await connection.beginTransaction();
+    const columns = await getCustomerReferralColumns(connection);
 
     await validateAssignment(connection, payload, null);
 
+    const insertColumns = [
+      'first_name',
+      'last_name',
+      'identity_number',
+      'birth_date',
+      'occupation',
+      'phone_primary',
+      'phone_secondary',
+      'email',
+      'address',
+      'detail_description'
+    ];
+
+    if (columns.hasReferenceName) {
+      insertColumns.push('reference_name');
+    }
+
+    if (columns.hasReferralSource) {
+      insertColumns.push('referral_source');
+    }
+
+    insertColumns.push('customer_type', 'project_id', 'unit_id');
+    const placeholders = insertColumns.map(() => '?').join(', ');
+
     const [result] = await connection.execute(
       `INSERT INTO customers (
-        first_name,
-        last_name,
-        identity_number,
-        birth_date,
-        occupation,
-        phone_primary,
-        phone_secondary,
-        email,
-        address,
-        detail_description,
-        reference_name,
-        referral_source,
-        customer_type,
-        project_id,
-        unit_id
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      toInsertValues(payload)
+        ${insertColumns.join(',\n        ')}
+      ) VALUES (${placeholders})`,
+      toInsertValues(payload, columns)
     );
 
     if (payload.unitId) {
@@ -317,6 +383,7 @@ async function updateCustomer(customerId, payload) {
 
   try {
     await connection.beginTransaction();
+    const columns = await getCustomerReferralColumns(connection);
 
     const existingCustomer = await getCustomerById(connection, customerId);
     if (!existingCustomer) {
@@ -326,25 +393,50 @@ async function updateCustomer(customerId, payload) {
 
     await validateAssignment(connection, payload, customerId);
 
+    const setClauses = [
+      'first_name = ?',
+      'last_name = ?',
+      'identity_number = ?',
+      'birth_date = ?',
+      'occupation = ?',
+      'phone_primary = ?',
+      'phone_secondary = ?',
+      'email = ?',
+      'address = ?',
+      'detail_description = ?'
+    ];
+
+    const updateValues = [
+      payload.firstName,
+      payload.lastName,
+      payload.identityNumber,
+      payload.birthDate,
+      payload.occupation,
+      payload.phonePrimary,
+      payload.phoneSecondary || null,
+      payload.email,
+      payload.address,
+      payload.detailDescription || null
+    ];
+
+    if (columns.hasReferenceName) {
+      setClauses.push('reference_name = ?');
+      updateValues.push(payload.referenceName || null);
+    }
+
+    if (columns.hasReferralSource) {
+      setClauses.push('referral_source = ?');
+      updateValues.push(payload.referralSource || null);
+    }
+
+    setClauses.push('customer_type = ?', 'project_id = ?', 'unit_id = ?');
+    updateValues.push(payload.customerType, payload.projectId || null, payload.unitId || null, customerId);
+
     await connection.execute(
       `UPDATE customers
-       SET first_name = ?,
-           last_name = ?,
-           identity_number = ?,
-           birth_date = ?,
-           occupation = ?,
-           phone_primary = ?,
-           phone_secondary = ?,
-           email = ?,
-           address = ?,
-           detail_description = ?,
-           reference_name = ?,
-           referral_source = ?,
-           customer_type = ?,
-           project_id = ?,
-           unit_id = ?
+       SET ${setClauses.join(',\n           ')}
        WHERE id = ?`,
-      [...toInsertValues(payload), customerId]
+      updateValues
     );
 
     if (existingCustomer.unitId && existingCustomer.unitId !== payload.unitId) {
